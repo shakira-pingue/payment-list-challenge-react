@@ -20,4 +20,21 @@ describe("SearchBarComponent", () => {
     fireEvent.click(screen.getByRole("button", { name: I18N.SEARCH_BUTTON }));
     expect(setSearch).toHaveBeenCalledWith("pay_134_1");
   });
+
+  test("hides the clear button when there is no search input", () => {
+    render(<SearchBarComponent searchInput="" setSearchInput={vi.fn()} setSearch={vi.fn()} />);
+
+    expect(screen.queryByRole("button", { name: I18N.CLEAR_FILTERS })).not.toBeInTheDocument();
+  });
+
+  test("clears the search input and the applied search when clicked", () => {
+    const setSearchInput = vi.fn();
+    const setSearch = vi.fn();
+
+    render(<SearchBarComponent searchInput="pay_134_1" setSearchInput={setSearchInput} setSearch={setSearch} />);
+
+    fireEvent.click(screen.getByRole("button", { name: I18N.CLEAR_FILTERS }));
+    expect(setSearchInput).toHaveBeenCalledWith("");
+    expect(setSearch).toHaveBeenCalledWith("");
+  });
 });
