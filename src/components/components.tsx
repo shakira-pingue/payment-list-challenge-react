@@ -5,6 +5,19 @@ export const Container = styled.div`
   max-width: 72rem;
   margin: 0 auto;
   padding: 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Box = styled.div`
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-content: center;
+  flex-wrap: wrap;
 `;
 
 export const Title = styled.h2`
@@ -157,8 +170,8 @@ export const StatusBadge = styled.span<{ status: string }>`
     props.status === "completed"
       ? `background-color: #d1fae5; color: #15803d;`
       : props.status === "pending"
-      ? `background-color: #fef3c7; color: #92400e;`
-      : `background-color: #fee2e2; color: #b91c1c;`}
+        ? `background-color: #fef3c7; color: #92400e;`
+        : `background-color: #fee2e2; color: #b91c1c;`}
 `;
 
 export const Spinner = styled.div`
