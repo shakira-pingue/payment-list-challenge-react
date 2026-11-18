@@ -40,3 +40,5 @@ export const I18N = {
   EMPTY_CUSTOMER: "—",
   EMPTY_CURRENCY: "—",
 } as const; 
+
+export type I18nKey = keyof typeof I18N;
