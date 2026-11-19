@@ -4,7 +4,7 @@ import { httpClient } from "../api/httpClient";
 import { API_URL } from "../constants";
 import { I18N } from "../constants/i18n";
 import { PaymentSearchResponse } from "../types/payment";
-import { Container, Title, Spinner, FlexRow, Box, ErrorBox, TableWrapper } from "../components/components";
+import { Container, Title, Spinner, Box, ErrorBox, TableWrapper } from "../components/components";
 import { TableComponent } from "../components/TableComponent";
 import { SearchBarComponent } from "../components/SearchBarComponent";
 import { PaginationComponent } from "../components/PaginationComponent";

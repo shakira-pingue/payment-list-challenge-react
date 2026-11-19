@@ -11,8 +11,10 @@ httpClient.interceptors.response.use(
       status === 404
         ? I18N.PAYMENT_NOT_FOUND
         : status === 500
-        ? I18N.INTERNAL_SERVER_ERROR
-        : I18N.SOMETHING_WENT_WRONG;
+          ? I18N.INTERNAL_SERVER_ERROR
+          : I18N.SOMETHING_WENT_WRONG;
+
+    console.error("[httpClient] Request Failed", { status, message, error });
     return Promise.reject(new Error(message));
   }
 );
