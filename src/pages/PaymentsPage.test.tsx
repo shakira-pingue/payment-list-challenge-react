@@ -52,4 +52,19 @@ describe("PaymentsPage", () => {
       expect(screen.getByText(I18N.INTERNAL_SERVER_ERROR)).toBeInTheDocument();
     });
   });
+
+  test("navigates to the next page and shows its payments", async () => {
+    renderPage();
+
+    await waitFor(() => {
+      expect(screen.getByText("pay_134_1")).toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: I18N.NEXT_BUTTON }));
+
+    await waitFor(() => {
+      expect(screen.getByText("pay_456_1")).toBeInTheDocument();
+    });
+    expect(screen.getByRole("button", { name: I18N.PREVIOUS_BUTTON })).toBeEnabled();
+  });
 });
