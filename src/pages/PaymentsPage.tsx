@@ -13,19 +13,26 @@ const PAGE_SIZE = 5;
 export const PaymentsPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
+  const [currency, setCurrency] = useState("");
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["payments", search],
+    queryKey: ["payments", search, currency],
     queryFn: () =>
       httpClient
-        .get<PaymentSearchResponse>(API_URL, { params: { search, page: 1, pageSize: PAGE_SIZE } })
+        .get<PaymentSearchResponse>(API_URL, { params: { search, currency, page: 1, pageSize: PAGE_SIZE } })
         .then((res) => res.data),
   });
 
   return (
     <Container>
       <Title>{I18N.PAGE_TITLE}</Title>
-      <SearchBarComponent searchInput={searchInput} setSearchInput={setSearchInput} setSearch={setSearch} />
+      <SearchBarComponent
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        setSearch={setSearch}
+        currency={currency}
+        setCurrency={setCurrency}
+      />
       <Box>{isLoading && <Spinner />}</Box>
       {error && <ErrorBox role="alert">{error.message}</ErrorBox>}
       {!isLoading && !error && data && (
